@@ -1,0 +1,109 @@
+PPE Detection Using YOLOv8 - Terminal Commands
+
+
+1. Go to Project Folder
+cd PPE_YOLO_Project
+
+Moves the terminal to the project folder.
+
+2. Create Virtual Environment
+python -m venv venv
+
+Creates a virtual environment named venv.
+
+3. Allow PowerShell Script Execution
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+Temporarily allows PowerShell scripts to run.
+
+4. Activate Virtual Environment
+.\venv\Scripts\Activate.ps1
+
+Activates the virtual environment.
+
+After activation, (venv) will appear in the terminal.
+
+5. Upgrade Pip
+python -m pip install --upgrade pip
+
+Updates Python's package manager.
+
+6. Install Required Libraries
+python -m pip install ultralytics streamlit pillow numpy
+
+Installs:
+
+Ultralytics (YOLOv8)
+Streamlit
+Pillow
+NumPy
+
+7. Check YOLO Installation
+python -c "from ultralytics import YOLO; print('YOLO working')"
+
+Checks whether YOLO is installed correctly.
+
+Expected output:
+
+YOLO working
+
+8. Train YOLOv8 Model
+yolo detect train model=yolov8n.pt data=construction-ppe.yaml epochs=5 imgsz=640
+
+Trains the YOLOv8 model using the PPE dataset.
+
+yolov8n.pt = Base YOLOv8 model
+construction-ppe.yaml = Dataset configuration
+epochs=5 = Train dataset 5 times
+imgsz=640 = Image size 640 × 640
+9. Check Trained Model
+dir runs\detect\train\weights
+
+Checks whether the trained model files are created.
+
+Expected files:
+
+best.pt
+last.pt
+
+10. Copy Best Model
+copy runs\detect\train\weights\best.pt .\best.pt
+
+Copies the best trained model to the main project folder.
+
+11. Check Model Classes
+python -c "from ultralytics import YOLO; model=YOLO('best.pt'); print(model.names)"
+
+Displays the PPE classes detected by the trained model.
+
+12. Run Streamlit Application
+python -m streamlit run ppe_yolo_project.py
+
+Starts the PPE Detection web application.
+
+The application opens in the browser using:
+
+http://localhost:8501
+
+Project Workflow
+Create Virtual Environment
+        ↓
+Install Libraries
+        ↓
+Train YOLOv8 Model
+        ↓
+Generate best.pt
+        ↓
+Create Streamlit Application
+        ↓
+Run Application
+        ↓
+Detect PPE from Uploaded Images
+
+Technologies Used
+Python
+YOLOv8
+Ultralytics
+Streamlit
+NumPy
+Pillow

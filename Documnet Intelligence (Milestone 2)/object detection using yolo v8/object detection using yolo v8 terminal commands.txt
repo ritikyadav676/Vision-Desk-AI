@@ -1,0 +1,27 @@
+IN VS CODE TERMINAL:
+
+1.First go to your folder:
+
+cd /d F:\bgmi1
+
+2.Then create a virtual environment:
+
+python -m venv .venv
+
+3.Activate it depending on your terminal.
+
+If VS Code terminal is CMD:
+
+.venv\Scripts\activate
+
+If VS Code terminal is PowerShell:
+
+.venv\Scripts\Activate.ps1
+
+4.Then install libraries:
+
+pip install streamlit ultralytics pillow
+
+5.Then run your Python file using Streamlit:
+
+streamlit run app.py

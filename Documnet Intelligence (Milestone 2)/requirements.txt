@@ -1,0 +1,15 @@
+pypdf>=5.0.0
+pytest>=8.0.0
+mysql-connector-python
+PyMuPDF
+pydantic
+ultralytics
+opencv-python
+Pillow
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+faiss-cpu
+langgraph
+python-dotenv
